@@ -48,6 +48,21 @@ class HashTable(object):
                 linkedList.moveNext()
         return None
 
+    def deleteElement(self,key):
+        index = self.getHash(key)
+        linkedList = self.table[index]
+        if not linkedList.isEmpty():
+            linkedList.moveHead()
+            for i in range(linkedList.getSize()):
+                nodeKey, nodeValue = linkedList.getCurrent()
+                if nodeKey == key:
+                    linkedList.remove()
+                    return True
+                linkedList.moveNext()
+                
+        return False
+
+
     def __str__(self):
         text = ''
         for i in range(self.tableSize):
