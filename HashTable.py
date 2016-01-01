@@ -12,7 +12,12 @@ class HashTable(object):
             self.table.append(aux)
 
     def getHash(self,key):
+        key = str(key)
+        index = 0
+        for i in key:
+            index += ord(i)
         index = key%self.tableSize
+        
         return index
 
     def insertElement(self,key,value):
