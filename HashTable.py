@@ -16,7 +16,7 @@ class HashTable(object):
         index = 0
         for i in key:
             index += ord(i)
-        index = key%self.tableSize
+        index = index%self.tableSize
         
         return index
 
@@ -49,9 +49,9 @@ class HashTable(object):
             for i in range(linkedList.getSize()):
                 nodeKey , nodeValue = linkedList.getCurrent()
                 if nodeKey == key:
-                    return nodeValue
+                    return str(key) + ": " + str(nodeValue)
                 linkedList.moveNext()
-        return None
+        return "No se encuentra"
 
     def deleteElement(self,key):
         index = self.getHash(key)
